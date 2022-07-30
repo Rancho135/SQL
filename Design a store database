@@ -1,0 +1,29 @@
+/*Create your own store! Your store should sell one type of things, like clothing or bikes, whatever you want your store to specialize in. 
+You should have a table for all the items in your store, and at least 5 columns for the kind of data you think you'd need to store. 
+You should sell at least 15 items, and use select statements to order your items by price and show at least one statistic about the items.*/
+
+
+CREATE TABLE products (id INTEGER PRIMARY KEY, item_name TEXT, item_unit INTEGER, item_color TEXT, price INTEGER);
+
+
+INSERT INTO products VALUES 
+(1, "pen", 1, "blue",100),
+(2, "cat", 2, "red",220),
+(3, "dog", 3, "blue",230),
+(4, "meat", 4, "yellow",240),
+(5, "chicken", 5, "blue",250),
+(6, "rat", 6, "black",260),
+(7, "egg", 7, "blue",270),
+(8, "phone", 8, "white",290),
+(9, "computers", 9, "blue",300),
+(10, "apple", 10, "blue",400),
+(11, "maggi", 11, "yellow",500),
+(12, "shoes", 12, "blue",600),
+(13, "orange", 13, "black",700),
+(14, "clock", 14, "red",800),
+(15, "pods", 15, "red",900),
+(16, "drugs", 16, "red",541);
+
+SELECT *FROM products WHERE price > 300 ORDER BY price;
+
+SELECT COUNT(item_unit) FROM products;
