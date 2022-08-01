@@ -1,0 +1,48 @@
+/* Create table about the people and what they do here */
+CREATE TABLE famous_people(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,year_of_birth INTEGER,year_of_death INTEGER,occupation TEXT);
+
+INSERT INTO famous_people (name, year_of_birth, year_of_death,occupation) VALUES ("Marilyn Monroe", "1926","1962","American actress singer");
+
+INSERT INTO famous_people (name, year_of_birth, year_of_death,occupation) VALUES ("Abraham Lincoln", "1809","1865","US President during");
+
+INSERT INTO famous_people (name, year_of_birth, year_of_death,occupation) VALUES ("Nelson Mandela","1918","2013","South African President");
+
+
+INSERT INTO famous_people (name, year_of_birth, year_of_death,occupation) VALUES ("Martin Luther King","1929","1968", "American civil rights campaigner");
+
+INSERT INTO famous_people (name, year_of_birth, year_of_death,occupation) VALUES ("Muhammad Ali","1942","2016","American Boxer");
+
+INSERT INTO famous_people (name, year_of_birth, year_of_death,occupation) VALUES ("Elvis Presley", "1935","1977"," American musician");
+
+INSERT INTO famous_people (name, year_of_birth, year_of_death,occupation) VALUES ("Albert Einstein","1879","1955", "German scientist");
+
+INSERT INTO famous_people (name, year_of_birth, year_of_death,occupation) VALUES ("Paul McCartney","1942","NULL","British musician");
+
+INSERT INTO famous_people (name, year_of_birth, year_of_death,occupation) VALUES ("Leonardo da Vinci", "1452", "1519", "Italian, painter");
+
+INSERT INTO famous_people (name, year_of_birth, year_of_death,occupation) VALUES ("Vladimir Putin","1952","NULL","Russian leader");
+
+
+
+/* One of the tables contains a column that relates to the primary key of another table.
+*/
+CREATE TABLE known_for (id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT, dead_or_alive TEXT);
+
+INSERT INTO known_for (name,dead_or_alive) VALUES ("model","dead");
+INSERT INTO known_for (name,dead_or_alive) VALUES ("American civil war","dead");
+INSERT INTO known_for (name,dead_or_alive) VALUES ("anti-apartheid campaigner","dead");
+INSERT INTO known_for (name,dead_or_alive) VALUES ("null","dead");
+INSERT INTO known_for (name,dead_or_alive) VALUES ("civil rights campaigner","dead");
+INSERT INTO known_for (name,dead_or_alive) VALUES ("null","dead");
+INSERT INTO known_for (name,dead_or_alive) VALUES ("theory of relativity","dead");
+INSERT INTO known_for (name,dead_or_alive) VALUES ("member of Beatles","dead");
+INSERT INTO known_for (name,dead_or_alive) VALUES ("scientist, polymath","dead");
+INSERT INTO known_for (name,dead_or_alive) VALUES ("null","alive");
+
+SELECT f.name,f.occupation,k.name as famous_for ,k.dead_or_alive
+FROM famous_people as f
+LEFT OUTER JOIN known_for as k
+ON f.id = k.id;
+
+/* In this project, i created two tables and used a select and join statement with extract names of famous people, why they are famous and whether they are dead or alive*/
+
