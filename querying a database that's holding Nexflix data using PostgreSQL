@@ -1,0 +1,40 @@
+--In this SQL code, I'm querying a database that's holding Nexflix data to answer questions about the data
+-- (PostgreSQL)
+--Try to figure out which attribute you'd use to be able to join the two tables
+
+SELECT n.director,np.type,np.title
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" n
+LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" np
+ON np.show_id = n.show_id;
+
+--How many movie titles are there in the database? (movies only, not tv shows)
+SELECT COUNT(title)
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie';
+--There are 6131 movie titles are there in the database.
+
+--When was the most recent batch of tv shows and/or movies added to the database?
+SELECT max(date(date_added))
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+
+
+--List all the movies and tv shows in alphabetical order.
+SELECT title
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info" np
+ORDER BY title asc;
+
+--Who was the Director for the movie Bright Star?
+SELECT n.director,np.type,np.title
+FROM "CharlotteChaze/BreakIntoTech"."netflix_people" n
+LEFT JOIN "CharlotteChaze/BreakIntoTech"."netflix_titles_info" np
+ON n.show_id = np.show_id
+WHERE title LIKE 'Bright Star'
+
+--What is the oldest movie in the database and what year was it made?
+
+SELECT title,type, date_added, release_year
+FROM "CharlotteChaze/BreakIntoTech"."netflix_titles_info"
+WHERE type = 'Movie'
+GROUP BY title,type, date_added, release_year
+ORDER BY release_year asc
+LIMIT 3;
